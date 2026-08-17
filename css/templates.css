@@ -1,0 +1,97 @@
+/* ============================================================
+   Resume templates
+   All templates stay single-column with semantic headings so the
+   output remains ATS-friendly.
+   ============================================================ */
+
+.resume {
+  --accent: #2563eb;
+  padding: 40px 48px;
+  color: #1f2430;
+  background: #fff;
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+
+.resume a { color: inherit; text-decoration: none; }
+
+/* Shared building blocks */
+.resume .r-name { margin: 0; font-weight: 700; }
+.resume .r-title { margin: 2px 0 0; font-weight: 500; }
+.resume .r-contact { list-style: none; margin: 10px 0 0; padding: 0; }
+.resume .r-contact li { display: inline-block; }
+.resume .r-summary { margin: 10px 0 0; }
+.resume .r-section { margin-top: 22px; }
+.resume .r-section-title { margin: 0 0 8px; font-size: 15px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; }
+.resume .r-entry { margin-bottom: 12px; }
+.resume .r-entry-head { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; }
+.resume .r-entry-head h3 { margin: 0; font-size: 14px; font-weight: 600; }
+.resume .r-date { font-size: 12px; white-space: nowrap; }
+.resume .r-sub { margin: 1px 0 0; font-weight: 500; }
+.resume .r-detail { margin: 1px 0 0; }
+.resume .r-skills-group { margin-bottom: 8px; }
+.resume .r-skills-group h3 { margin: 0 0 2px; font-size: 13px; font-weight: 600; }
+.resume .r-skills-line { margin: 0; }
+
+/* ============================================================
+   Template: Modern
+   Accent-colored top band + section rules
+   ============================================================ */
+
+.resume--modern .resume-header {
+  border-bottom: 3px solid var(--accent);
+  padding-bottom: 16px;
+}
+
+.resume--modern .r-name { font-size: 30px; color: var(--accent); }
+.resume--modern .r-title { font-size: 16px; color: #374151; }
+.resume--modern .r-contact { border-top: 1px solid #e5e7eb; padding-top: 10px; }
+.resume--modern .r-contact li + li::before { content: "  |  "; color: #9ca3af; }
+.resume--modern .r-section { border-top: 1px solid #e5e7eb; padding-top: 12px; }
+.resume--modern .r-section-title { color: var(--accent); }
+.resume--modern .r-date { color: #6b7280; }
+
+/* ============================================================
+   Template: Classic
+   Old-style serif, centered name, lines around headings
+   ============================================================ */
+
+.resume--classic { font-family: Georgia, "Times New Roman", serif; font-size: 13.5px; }
+.resume--classic .resume-header { text-align: center; border-bottom: 2px solid #111; padding-bottom: 14px; }
+.resume--classic .r-name { font-size: 30px; letter-spacing: 1px; }
+.resume--classic .r-title { font-size: 15px; font-style: italic; color: #374151; }
+.resume--classic .r-contact { margin-top: 8px; }
+.resume--classic .r-contact li + li::before { content: " •  "; color: #6b7280; }
+.resume--classic .r-summary { text-align: justify; }
+.resume--classic .r-section-title {
+  text-align: center;
+  position: relative;
+  color: inherit;
+  margin-bottom: 12px;
+}
+.resume--classic .r-section-title::before,
+.resume--classic .r-section-title::after {
+  content: "";
+  display: inline-block;
+  width: 60px;
+  height: 1px;
+  background: #111;
+  vertical-align: middle;
+  margin: 0 10px;
+}
+.resume--classic .r-date { color: #6b7280; font-style: italic; }
+
+/* ============================================================
+   Template: Minimal
+   Clean, light, generous whitespace
+   ============================================================ */
+
+.resume--minimal { font-family: "Segoe UI", system-ui, sans-serif; font-size: 13px; padding: 48px 56px; }
+.resume--minimal .resume-header { margin-bottom: 4px; }
+.resume--minimal .r-name { font-size: 34px; font-weight: 500; letter-spacing: 0.5px; }
+.resume--minimal .r-title { font-size: 15px; color: var(--accent); font-weight: 400; }
+.resume--minimal .r-contact { margin-top: 6px; }
+.resume--minimal .r-contact li + li::before { content: "  /  "; color: #9ca3af; }
+.resume--minimal .r-section-title { font-size: 14px; letter-spacing: 2px; color: inherit; border-bottom: 1px solid #d1d5db; padding-bottom: 6px; }
+.resume--minimal .r-date { color: #9ca3af; font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.5px; }
+.resume--minimal .r-entry-head h3 { font-weight: 600; }

@@ -1,0 +1,330 @@
+:root {
+  --accent: #2563eb;
+  --editor-w: 400px;
+  --topbar-h: 60px;
+  --bg: #eef1f6;
+  --panel-bg: #ffffff;
+  --border: #e2e6ee;
+  --text: #1f2430;
+  --muted: #6b7280;
+  --danger: #dc2626;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  height: 100%;
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---------- Top bar ---------- */
+
+.topbar {
+  height: var(--topbar-h);
+  background: #161b26;
+  color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.topbar-inner {
+  height: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.logo { font-size: 20px; margin: 0; font-weight: 700; letter-spacing: 0.3px; }
+.logo span { color: var(--accent); }
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.control-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: #c7cdd9;
+}
+
+.control-group select,
+.control-group input[type="color"] {
+  height: 30px;
+  border-radius: 6px;
+  border: 1px solid #3b4357;
+  background: #222a3a;
+  color: #fff;
+  padding: 0 6px;
+  font-size: 13px;
+}
+
+.control-group input[type="color"] {
+  width: 40px;
+  padding: 2px;
+}
+
+/* ---------- Buttons ---------- */
+
+.btn {
+  border: 1px solid #3b4357;
+  background: #222a3a;
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.btn:hover { background: #2c3650; }
+
+.btn-primary { background: var(--accent); border-color: var(--accent); }
+.btn-primary:hover { filter: brightness(1.1); background: var(--accent); }
+
+.btn-danger { border-color: #7f1d1d; background: #7f1d1d; }
+.btn-danger:hover { background: #a12727; }
+
+.btn-add {
+  width: 100%;
+  border-style: dashed;
+  background: transparent;
+  color: var(--accent);
+  border-color: var(--accent);
+  padding: 8px;
+  margin-top: 8px;
+}
+.btn-add:hover { background: rgba(37, 99, 235, 0.08); }
+
+/* ---------- Workspace ---------- */
+
+.workspace {
+  flex: 1;
+  display: flex;
+  min-height: 0;
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* ---------- Editor ---------- */
+
+.editor {
+  width: var(--editor-w);
+  flex-shrink: 0;
+  background: var(--panel-bg);
+  border-right: 1px solid var(--border);
+  overflow-y: auto;
+  height: calc(100vh - var(--topbar-h));
+  position: sticky;
+  top: var(--topbar-h);
+}
+
+.editor form { padding: 12px; display: flex; flex-direction: column; gap: 12px; }
+
+.panel {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fafbfd;
+}
+
+.panel-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  background: #f2f4f9;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: left;
+  color: var(--text);
+}
+
+.panel-header:hover { background: #e9edf5; }
+
+.chevron {
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid var(--muted);
+  border-bottom: 2px solid var(--muted);
+  transform: rotate(45deg);
+  transition: transform 0.2s;
+}
+
+.panel-header[aria-expanded="false"] .chevron { transform: rotate(-45deg); }
+
+.panel-body { padding: 12px; display: block; }
+
+.panel-header[aria-expanded="false"] + .panel-body { display: none; }
+
+.row { display: flex; gap: 10px; }
+
+.field { flex: 1; margin-bottom: 10px; }
+
+.field label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.field input,
+.field textarea,
+.field select {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 8px 10px;
+  font-size: 13px;
+  font-family: inherit;
+  background: #fff;
+  color: var(--text);
+}
+
+.field input:focus,
+.field textarea:focus,
+.field select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+}
+
+.field textarea { resize: vertical; }
+
+/* ---------- Dynamic entries (education / experience / etc.) ---------- */
+
+.card {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 10px;
+  background: #fff;
+  position: relative;
+}
+
+.card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.card-head strong { font-size: 13px; color: var(--text); }
+
+.remove-btn {
+  border: none;
+  background: none;
+  color: var(--danger);
+  cursor: pointer;
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+.remove-btn:hover { background: rgba(220, 38, 38, 0.1); }
+
+.skill-tags { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+
+.skill-tag {
+  background: var(--accent);
+  color: #fff;
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.skill-tag button {
+  border: none;
+  background: rgba(255, 255, 255, 0.25);
+  color: #fff;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  font-size: 11px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0;
+}
+
+.skill-tag button:hover { background: rgba(255, 255, 255, 0.4); }
+
+/* ---------- Preview ---------- */
+
+.preview {
+  flex: 1;
+  padding: 24px;
+  overflow-y: auto;
+  height: calc(100vh - var(--topbar-h));
+}
+
+.preview-frame {
+  max-width: 820px;
+  margin: 0 auto;
+  background: #fff;
+  min-height: 1000px;
+  border-radius: 4px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
+}
+
+#resumeContainer { min-height: 1000px; }
+
+/* ---------- Print ---------- */
+
+@media print {
+  body { background: #fff; }
+  .topbar, .editor { display: none !important; }
+
+  .preview {
+    padding: 0;
+    overflow: visible;
+    height: auto;
+  }
+
+  .preview-frame {
+    max-width: 100%;
+    box-shadow: none;
+    min-height: auto;
+  }
+
+  #resumeContainer { min-height: auto; }
+}
+
+/* ---------- Small screens ---------- */
+
+@media (max-width: 900px) {
+  .workspace { flex-direction: column; }
+  .editor {
+    width: 100%;
+    height: auto;
+    position: static;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+  .preview { height: auto; }
+}

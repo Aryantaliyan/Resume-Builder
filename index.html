@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resume Builder</title>
+  <link rel="stylesheet" href="css/app.css">
+  <link rel="stylesheet" href="css/templates.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <h1 class="logo">Resume <span>Builder</span></h1>
+      <div class="controls">
+        <label class="control-group">
+          <span>Template</span>
+          <select id="templateSelect">
+            <option value="modern">Modern</option>
+            <option value="classic">Classic</option>
+            <option value="minimal">Minimal</option>
+          </select>
+        </label>
+        <label class="control-group">
+          <span>Accent</span>
+          <input type="color" id="accentColor" value="#2563eb">
+        </label>
+        <label class="control-group">
+          <span>Mode</span>
+          <select id="previewMode">
+            <option value="normal">Preview</option>
+            <option value="text">Plain text</option>
+          </select>
+        </label>
+        <button id="downloadPdf" class="btn btn-primary" type="button">Print / PDF</button>
+        <button id="downloadTxt" class="btn" type="button">Download .txt</button>
+        <button id="resetBtn" class="btn btn-danger" type="button">Reset</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="workspace">
+    <aside class="editor">
+      <form id="resumeForm">
+        <section class="panel" data-panel="personal">
+          <button class="panel-header" type="button" aria-expanded="true">
+            <span>Personal Information</span><span class="chevron"></span>
+          </button>
+          <div class="panel-body">
+            <div class="row">
+              <div class="field">
+                <label for="fullName">Full Name</label>
+                <input type="text" id="fullName" placeholder="Jane Doe">
+              </div>
+              <div class="field">
+                <label for="jobTitle">Job Title</label>
+                <input type="text" id="jobTitle" placeholder="Software Engineer">
+              </div>
+            </div>
+            <div class="row">
+              <div class="field">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="jane@example.com">
+              </div>
+              <div class="field">
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" placeholder="+1 555 000 0000">
+              </div>
+            </div>
+            <div class="row">
+              <div class="field">
+                <label for="location">Location</label>
+                <input type="text" id="location" placeholder="City, State">
+              </div>
+              <div class="field">
+                <label for="website">Website</label>
+                <input type="text" id="website" placeholder="jane.dev">
+              </div>
+            </div>
+            <div class="field">
+              <label for="summary">Professional Summary</label>
+              <textarea id="summary" rows="4" placeholder="A short summary of who you are&hellip;"></textarea>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" data-panel="education">
+          <button class="panel-header" type="button" aria-expanded="true">
+            <span>Education</span><span class="chevron"></span>
+          </button>
+          <div class="panel-body">
+            <div id="educationList"></div>
+            <button class="btn btn-add" type="button" id="addEducation">+ Add Education</button>
+          </div>
+        </section>
+
+        <section class="panel" data-panel="experience">
+          <button class="panel-header" type="button" aria-expanded="true">
+            <span>Experience</span><span class="chevron"></span>
+          </button>
+          <div class="panel-body">
+            <div id="experienceList"></div>
+            <button class="btn btn-add" type="button" id="addExperience">+ Add Experience</button>
+          </div>
+        </section>
+
+        <section class="panel" data-panel="skills">
+          <button class="panel-header" type="button" aria-expanded="true">
+            <span>Skills</span><span class="chevron"></span>
+          </button>
+          <div class="panel-body">
+            <div id="skillsList"></div>
+            <button class="btn btn-add" type="button" id="addSkill">+ Add Skill Group</button>
+          </div>
+        </section>
+
+        <section class="panel" data-panel="projects">
+          <button class="panel-header" type="button" aria-expanded="false">
+            <span>Projects</span><span class="chevron"></span>
+          </button>
+          <div class="panel-body">
+            <div id="projectsList"></div>
+            <button class="btn btn-add" type="button" id="addProject">+ Add Project</button>
+          </div>
+        </section>
+      </form>
+    </aside>
+
+    <section class="preview">
+      <div class="preview-frame">
+        <div id="resumeContainer"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/data.js"></script>
+  <script src="js/render.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/print.js"></script>
+</body>
+</html>
